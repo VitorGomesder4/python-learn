@@ -37,3 +37,6 @@ print()
 lista.remove(4)
 print(f"lista removido por valor: {lista}")
 print()
+
+# enumerate() 
+print(enumerate(lista))
