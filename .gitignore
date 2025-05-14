@@ -1,0 +1,17 @@
+# Ignorar ambientes virtuais
+venv/
+.venv/
+env/
+
+# Ignorar o arquivo de versão do pyenv
+.python-version
+
+# Ignorar arquivos do VS Code (opcional)
+.vscode/
+
+# Ignorar arquivos do sistema
+__pycache__/
+*.pyc
+
+# Arquivos de log (opcional)
+*.log
