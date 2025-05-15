@@ -1,4 +1,8 @@
-from gerenciadorv2 import GerenciadorDeTarefasv2
+from gerenciadorv2_corrigido import GerenciadorDeTarefasv2
+
+gerenciador = GerenciadorDeTarefasv2()
+
+programa = True
 
 print("""Help para ver o menu:
       1.Adicionar tarefa
@@ -7,36 +11,36 @@ print("""Help para ver o menu:
       4.Completar tarefas
       5.Deletar tarefas
       6.Sair\n""")
-while True:
-    inputcli = input().lower().strip()
+
+while programa:
+
+    inputcli = input().strip()
 
     match inputcli:
 
         case "1":
-            tarefa = input("Digite a tarefa: ")
-            GerenciadorDeTarefasv2.adicionar_tarefa(tarefa)
-            pass
+            gerenciador.adicionar_tarefas()
 
         case "2":
-            GerenciadorDeTarefasv2.ver_tarefas()
+            gerenciador.ver_tarefas()
             pass
 
         case "3":
-            GerenciadorDeTarefasv2.atualizar_tarefas()
+            gerenciador.atualizar_tarefas()
             pass
 
         case "4":
-            GerenciadorDeTarefasv2.completar_tarefas()
+            gerenciador.completar_tarefas()
             pass
 
         case "5":
-            GerenciadorDeTarefasv2.deletar_tarefas()
+            gerenciador.deletar_tarefas()
             pass
 
         case "6":
-            GerenciadorDeTarefasv2.exit()
-            pass
+            programa = gerenciador.exit()
+            
 
         case "help":
-            GerenciadorDeTarefasv2.exibir_menu()
+            gerenciador.exibir_menu()
             pass

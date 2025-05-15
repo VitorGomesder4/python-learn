@@ -22,65 +22,61 @@ class GerenciadorDeTarefasv2():
                 continue
 
     def ver_tarefas(self):
+        if not self.lista_tarefas:  # Mostrar mensagem se lista vazia
+            print("Nenhuma tarefa cadastrada.\n")
+            return
+        
         for tarefa in self.lista_tarefas:
-            print(tarefa, end=" ")
+            print(tarefa)  # Mostrar uma por linha para melhor leitura
         print()
 
     def atualizar_tarefas(self):
-
         tarefa = input("Digite a tarefa a atualizar: ").strip().lower().capitalize()
-        for i in self.lista_tarefas:
-            if i == tarefa:
-                antiga_tarefa = i
-                i = input("Digite a nova tarefa: ")
-                result = print(f"Tarefa {antiga_tarefa} atualizada para {i}.\n")
-                break
-
-            else:
-                result = print("tarefa não encontrada.\n")
-                break
-
-        return result
+        for idx, tarefa_atual in enumerate(self.lista_tarefas):  # Percorrer com índice para alterar lista
+            if tarefa_atual == tarefa:
+                nova_tarefa = input("Digite a nova tarefa: ").strip().capitalize()
+                self.lista_tarefas[idx] = nova_tarefa  # Atualizar lista corretamente
+                print(f"Tarefa '{tarefa}' atualizada para '{nova_tarefa}'.\n")
+                return  # Sai após atualizar
+        
+        print("Tarefa não encontrada.\n")  # Se não achar, só imprime aqui (fora do loop)
 
     def completar_tarefas(self):
         tarefa = input("Digite a tarefa a completar: ").strip().lower().capitalize()
 
         if tarefa in self.lista_tarefas:
             self.lista_tarefas_completadas.append(tarefa)
-            result = print(f"Tarefa '{tarefa}' completada.\n")
+            print(f"Tarefa '{tarefa}' completada.\n")  # Não atribuir resultado do print a variável
 
         else:
-            result = print("tarefa não encontrada.\n")
-
-        return result
+            print("Tarefa não encontrada.\n")
 
     def deletar_tarefas(self):
-
-        print("""Voce deseja:
+        print("""Você deseja:
               1. Deletar tarefas atuais
               2. Deletar tarefas na lista de completas""")
-        input_ = input()
-        if input_ == "1":
+        escolha = input()
+        if escolha == "1":
             tarefa = input("Digite a tarefa a deletar: ").strip().lower().capitalize()
 
             try:
                 self.lista_tarefas.remove(tarefa)
-            except ValueError:
-                print(f"Erro: {ValueError}.\nValor '{tarefa}' nao encontrado.\n")
+                print(f"Tarefa '{tarefa}' removida da lista atual.\n")
+            except ValueError as e:  # Capturar exceção como e para mostrar mensagem correta
+                print(f"Erro: {e}\nValor '{tarefa}' não encontrado.\n")
             
-        elif input_ == "2":
+        elif escolha == "2":
             tarefa = input("Digite a tarefa a deletar: ").strip().lower().capitalize()
 
             try:
                 self.lista_tarefas_completadas.remove(tarefa)
-            except ValueError:
-                print(f"Erro: {ValueError}.\nValor '{tarefa}' nao encontrado.\n")
-
+                print(f"Tarefa '{tarefa}' removida da lista de completas.\n")
+            except ValueError as e:
+                print(f"Erro: {e}\nValor '{tarefa}' não encontrado.\n")
 
     def exit(self):
-        inputcli = input("Tem certeza que deseja finalizar o programa? (s/n): ").strip().lower()
-        while True:
-
+        while True:  # Loop para repetir até receber entrada válida
+            inputcli = input("Tem certeza que deseja finalizar o programa? (s/n): ").strip().lower()
             if inputcli in ["s", "sim"]:
                 return False
             
@@ -88,15 +84,13 @@ class GerenciadorDeTarefasv2():
                 return True
             
             else:
-                print("Comando invalido")
-                continue
+                print("Comando inválido")
 
     def exibir_menu(self):
-        result = print("""Help para ver o menu:
+        print("""Help para ver o menu:
         1.Adicionar tarefa
-        2.Vizualizar tarefas
+        2.Visualizar tarefas
         3.Atualizar tarefas
         4.Completar tarefas
         5.Deletar tarefas
-        6.Sair\n""")
-        return result
+        6.Sair\n""")  # print não precisa retornar valor
