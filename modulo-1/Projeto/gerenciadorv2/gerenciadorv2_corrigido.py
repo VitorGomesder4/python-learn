@@ -26,8 +26,8 @@ class GerenciadorDeTarefasv2():
             print("Nenhuma tarefa cadastrada.\n")
             return
         
-        for tarefa in self.lista_tarefas:
-            print(tarefa)  # Mostrar uma por linha para melhor leitura
+        for indice, tarefa in enumerate(self.lista_tarefas, start = 1):
+            print(f"Indice. [{indice}]. Tarefa = [{tarefa}]")  # Mostrar uma por linha para melhor leitura
         print()
 
     def atualizar_tarefas(self):
