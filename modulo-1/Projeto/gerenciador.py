@@ -1,8 +1,8 @@
 lista_tarefas = []
 lista_tarefas_completadas = []
-print("Digite 'help' para exibir o menu\n")
 
 while True:
+    print("\nDigite 'help' para exibir o menu\n")
     input_cli = input("").lower()
     if input_cli == "help":
         print("""Menu:
@@ -11,7 +11,7 @@ while True:
 3. Atualizar tarefas
 4. Completar tarefas
 5. Deletar tarefas
-6. Exit (Pode ser usado para sair de qualquer instancia)""")
+'exit' (Pode ser usado para sair de qualquer instancia)""")
         
     elif input_cli in ["adicionar tarefa", "1"]:
         while True:
@@ -54,7 +54,9 @@ while True:
                                 lista_tarefas[i] = nova_tarefa
                                 print(f"Tarefa atualizada: {lista_tarefas[i]}\n")
                                 break
-                break
+            else:
+                print("Tarefa não encontrada tente digite novamente ou exit para cancelar\n")
+                continue
 
     elif input_cli in ["completar tarefa", "4"]:
         while True:
