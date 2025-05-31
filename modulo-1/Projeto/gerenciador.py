@@ -11,7 +11,7 @@ while True:
 3. Atualizar tarefas
 4. Completar tarefas
 5. Deletar tarefas
-'exit' (Pode ser usado para sair de qualquer instancia)""")
+6. 'exit' (Pode ser usado para sair de qualquer instancia)""")
         
     elif input_cli in ["adicionar tarefa", "1"]:
         while True:
@@ -38,7 +38,7 @@ while True:
 
     elif input_cli in ["atualizar tarefa", "3"]:
         while True:
-            tarefa_atualizar = input("Digite a tarefa a ser atualizada: ")
+            tarefa_atualizar = input("Digite a tarefa a ser atualizada (exit para cancelar): ")
             if tarefa_atualizar == "exit":
                 print("Voltando ao menu..\n")
                 break
@@ -60,7 +60,7 @@ while True:
 
     elif input_cli in ["completar tarefa", "4"]:
         while True:
-            tarefa_completar = input("Digite sua tarefa a completar (exit para sair): ")
+            tarefa_completar = input("Digite sua tarefa a completar (exit para cancelar): ")
             if tarefa_completar == "exit":
                 print("Voltando ao menu..\n")
                 break
@@ -78,7 +78,7 @@ while True:
 
     elif input_cli in ["deletar tarefa", "5"]:
         while True:
-            tarefa_deletar = input("Digite sua tarefa a deletar: ")
+            tarefa_deletar = input("Digite sua tarefa a deletar (exit para cancelar): ")
 
             if tarefa_deletar in lista_tarefas:
                 for tarefa in lista_tarefas:
@@ -101,3 +101,7 @@ while True:
             else:
                 print("Tarefa não encontrada para delete\n")
                 continue
+    
+    elif input_cli in ["exit", "6"]:
+        print('terminando..')
+        break
