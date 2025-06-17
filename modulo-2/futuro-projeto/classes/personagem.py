@@ -1,9 +1,10 @@
+import random
 class Personagem:
     def __init__(self, nome, vida, nivel) -> None:
         self.__nome = nome
         self.__vida = vida
         self.__nivel = nivel
-        self.__strength_modifier = 1
+        self.__strength_modifier = 0
         self.__redutor_dano = 1
     
     def get_nome(self):
@@ -15,8 +16,13 @@ class Personagem:
     def get_nivel(self):
         return self.__nivel
     
-    def get_strength_modifier(self):
+    @property
+    def strength_modifier(self):
         return self.__strength_modifier
+    
+    @strength_modifier.setter
+    def strength_modifier(self, valor):
+        self.__strength_modifier = valor
     
     @property
     def redutor_dano(self):
@@ -35,7 +41,8 @@ class Personagem:
             self.__vida = 0
     
     def ataque_normal(self, alvo):
-        dano_base = self.__nivel * 2
+        dano_base = self.get_nivel() * random.randrange(1, 4)
         dano_final = ((dano_base) + self.__strength_modifier) * alvo.redutor_dano
         alvo.receber_ataque(dano_final)
         print(f"\n{self.get_nome()} atacou {alvo.get_nome()} e causou {dano_final} de dano\n")
+        print(f"Agora {alvo.get_nome()} possui {alvo.get_vida()} de hp\n")

@@ -1,3 +1,4 @@
+import random
 from classes.personagem import Personagem
 
 class Heroi(Personagem):
@@ -13,7 +14,7 @@ class Heroi(Personagem):
         return f"\n{super().exibir_detalhes()}\nHabilidade: {self.get_habilidade()}\n"
     
     def ataque_especial(self, alvo):
-        dano = (self.get_nivel() * 5) + self.get_strength_modifier()
+        dano = (self.get_nivel() * random.randrange(1, 4)) + self.strength_modifier
         alvo.receber_ataque(dano)
         print(f"\n{self.get_nome()} usou {self.get_habilidade()} em {alvo.get_nome()} e causou {dano} de dano\n")
 
@@ -21,13 +22,13 @@ class Heroi(Personagem):
 
         if lvl_skill == 1:
             percentual_redutor = 90
-
+            self.strength_modifier = 1
         elif lvl_skill == 2:
             percentual_redutor = 85
-
+            self.strength_modifier = 2
         elif lvl_skill == 3:
             percentual_redutor = 80
-
+            self.strength_modifier = 3
         else:
             raise ValueError("\nInvalido\n")
 

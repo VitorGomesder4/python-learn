@@ -39,15 +39,15 @@ class Batalha:
 
             if escolha == "1":
                 self.heroi.ataque_normal(self.inimigo)
-                time.sleep(1.5)
+                time.sleep(2)
             
             elif escolha == "2":
                 self.heroi.ataque_especial(self.inimigo)
-                time.sleep(1.5)
+                time.sleep(2)
 
             elif escolha == "3":
-                self.heroi.fortalecer(1)
-                time.sleep(1.5)
+                self.heroi.fortalecer(3)
+                time.sleep(2)
             
             else:
                 print("Escolha invalida selecione 1 ou 2\n")
@@ -57,7 +57,7 @@ class Batalha:
             print(f"\n{self.inimigo.get_nome()}'s turn")
             if self.inimigo.get_vida() > 0:
                 self.inimigo.ataque_normal(self.heroi)
-                time.sleep(1.5)
+                time.sleep(2)
 
         if self.heroi.get_vida() <= 0: #Se o heroi morreu
             print("\nDefeat..\n")
