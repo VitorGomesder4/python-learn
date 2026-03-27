@@ -1,1 +1,4 @@
-Flask==2.3.0
+Flask
+Flask-SQLAlchemy
+Flask-Cors
+Werkzeug
